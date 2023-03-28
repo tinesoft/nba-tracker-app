@@ -1,0 +1,48 @@
+<mat-card class="team-card" id="team-{{ team.abbreviation }}">
+  <mat-card-header class="card-header">
+    <mat-card-title class="team-title">{{ team.name }}</mat-card-title>
+    <button (click)="onRemoveTeam()" mat-button class="remove-team-button" id="remove{{team.abbreviation}}">
+      <mat-icon
+        aria-hidden="false"
+        aria-label="Remove team"
+        fontIcon="close"
+      ></mat-icon>
+    </button>
+    <mat-card-subtitle>{{
+      team.conference | nbatConference
+    }}</mat-card-subtitle>
+  </mat-card-header>
+  <img
+    mat-card-image
+    ngSrc="https://interstate21.com/nba-logos/{{ team.abbreviation }}.png"
+    [width]="500"
+    [height]="500"
+    alt="Team Logo"
+  />
+  <mat-divider></mat-divider>
+  <mat-card-content *ngIf="gameStats$ | async as gameStats; else loading">
+    <p>Results for the past {{ nbDays }} days:</p>
+    <mat-chip-listbox aria-label="Game Results">
+      <mat-chip-option
+        [color]="r === 'W' ? 'primary' : 'secondary'"
+        [selectable]="false"
+        [selected]="r === 'W'"
+        *ngFor="let r of gameStats.results"
+        >{{ r }}</mat-chip-option
+      >
+    </mat-chip-listbox>
+    <p>
+      Average pts scored: <strong> {{ gameStats.avgScoredPoints }}</strong>
+    </p>
+    <p>
+      Average pts conceded:
+      <strong> {{ gameStats.avgConcededPoints }}</strong>
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <a id="results{{team.abbreviation}}" [routerLink]="['/results', team.id]" mat-raised-button color="primary">See game results >></a>
+  </mat-card-actions>
+</mat-card>
+<ng-template #loading>
+  <mat-spinner><p>Loading...</p></mat-spinner>
+</ng-template>

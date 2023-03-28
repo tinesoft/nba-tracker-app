@@ -1,0 +1,25 @@
+<mat-form-field appearance="fill">
+  <mat-label>Select a team to track</mat-label>
+  <mat-select [formControl]="teamControl" required id="teamSelect">
+    <mat-option *ngFor="let team of teams" [value]="team">
+      {{ team.name }}
+    </mat-option>
+  </mat-select>
+  <mat-error *ngIf="teamControl.errors?.['required']">Please select an team</mat-error>
+  <mat-hint>{{ teamControl.value?.full_name }}</mat-hint>
+</mat-form-field>
+
+<button
+  id="trackBtn"
+  mat-raised-button
+  color="primary"
+  [disabled]="!teamControl.value"
+  (click)="onTrackTeam()"
+>
+  <mat-icon
+    aria-hidden="false"
+    aria-label="Track team icon"
+    fontIcon="visibility"
+  ></mat-icon>
+  Track Team
+</button>

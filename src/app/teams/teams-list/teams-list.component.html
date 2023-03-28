@@ -1,0 +1,8 @@
+<div class="teams-grid">
+  <nbat-team-games-summary
+    [team]="team"
+    (removeTeam)="onRemoveTeam($event)"
+    *ngFor="let team of teams; trackBy: trackByTeamId"
+  >
+  </nbat-team-games-summary>
+</div>

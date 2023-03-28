@@ -1,0 +1,5 @@
+.teams-grid {
+  display: grid;
+  grid-gap: 15px;
+  grid-template-columns: repeat(auto-fill, 500px);
+}

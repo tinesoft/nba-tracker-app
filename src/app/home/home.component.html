@@ -1,0 +1,4 @@
+<section>
+    <nbat-team-selector [teams]="teams$ | async" (trackTeam)="onTrackTeam($event)"></nbat-team-selector>
+    <nbat-teams-list [teams]="trackedTeams$ | async"(removeTeam)="onUntrackTeam($event)"></nbat-teams-list>
+</section>
