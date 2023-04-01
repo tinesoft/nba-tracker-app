@@ -2,7 +2,7 @@ import { Team } from './team';
 
 export interface Game {
   id: number;
-  date: number;
+  date: string;
   home_team: Team;
   home_team_score: number;
   period: number;

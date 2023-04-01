@@ -35,10 +35,10 @@ export class ApiService {
     const options = {
       headers,
       params: {
-        ...paginationParams,
-        'seasons[]': seasons,
-        'dates[]': gameDates,
         'team_ids[]': [teamId],
+        'dates[]': gameDates,
+        'seasons[]': seasons,
+        ...paginationParams
       },
     };
 

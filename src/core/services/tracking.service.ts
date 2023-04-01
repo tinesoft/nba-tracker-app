@@ -29,6 +29,8 @@ export class TrackingService {
   }
 
   untrackTeam(team: Team) {
-    this._trackedTeams$.next([...this._trackedTeams$.getValue().filter(t => t.id !== team.id)]);
+    const newTackedTeams = [...this._trackedTeams$.getValue().filter(t => t.id !== team.id)];
+    this._trackedTeams$.next(newTackedTeams);
+    this._lastTrackedTeam = newTackedTeams?.[newTackedTeams.length-1]??null;
   }
 }

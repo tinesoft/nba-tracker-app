@@ -62,6 +62,6 @@ export class GameService {
     if (isHomeTeam)
       return isHomeTeamWinning ? 'W' : 'L';
 
-    return 'L';
+    return isHomeTeamWinning ? 'L' : 'W';
   }
 }
