@@ -1,24 +1,26 @@
-<mat-card class="team-card" id="team-{{ team.abbreviation }}">
-  <mat-card-header class="card-header">
-    <mat-card-title class="team-title">{{ team.name }} [{{ team.abbreviation }}]</mat-card-title>
-    <mat-card-subtitle>{{
-      team.conference | nbatConference
-    }}</mat-card-subtitle>
-  </mat-card-header>
-  <mat-divider></mat-divider>
-  <mat-card-content>
-    <p>Scores of past {{ nbDays }} days:</p>
-    <ng-container *ngIf="games$ | async as games else loading" >
-    <p *ngFor="let game of games; trackBy: trackByGameId">
-       <strong>{{game.home_team.abbreviation}}</strong> {{game.home_team_score}} -  {{game.visitor_team_score}} <strong> {{ game.visitor_team.abbreviation }}</strong>
-    </p>
-    </ng-container>
+<div class="flex justify-center items-center m-4">
+  <mat-card class="w-96" id="team-{{ team.abbreviation }}">
+    <mat-card-header class="card-header">
+      <mat-card-title class="team-title">{{ team.name }} [{{ team.abbreviation }}]</mat-card-title>
+      <mat-card-subtitle>{{
+        team.conference | nbatConference
+      }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-divider></mat-divider>
+    <mat-card-content>
+      <p>Scores of past {{ nbDays }} days:</p>
+      <ng-container *ngIf="games$ | async as games else loading" >
+      <p *ngFor="let game of games; trackBy: trackByGameId">
+        <strong>{{game.home_team.abbreviation}}</strong> {{game.home_team_score}} -  {{game.visitor_team_score}} <strong> {{ game.visitor_team.abbreviation }}</strong>
+      </p>
+      </ng-container>
 
-  </mat-card-content>
-  <mat-card-actions>
-    <a id="backBtn" [routerLink]="'..'" mat-raised-button color="primary"> &lt;&lt;Back to all team stats</a>
-  </mat-card-actions>
-</mat-card>
-<ng-template #loading>
-  <mat-spinner><p>Loading...</p></mat-spinner>
-</ng-template>
+    </mat-card-content>
+    <mat-card-actions>
+      <a id="backBtn" [routerLink]="'..'" mat-raised-button color="primary"> &lt;&lt;Back to all team stats</a>
+    </mat-card-actions>
+  </mat-card>
+  <ng-template #loading>
+    <span class="flex justify-center items-center my-2 text-gray-400"><mat-spinner>Loading...</mat-spinner></span>
+  </ng-template>
+</div>

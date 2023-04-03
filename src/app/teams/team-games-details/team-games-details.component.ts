@@ -6,7 +6,6 @@ import {
   ViewEncapsulation,
 } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
-import { MatChipsModule } from '@angular/material/chips';
 import { MatDividerModule } from '@angular/material/divider';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 import { Observable } from 'rxjs';
@@ -32,7 +31,6 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
     MatIconModule,
     MatButtonModule,
     MatCardModule,
-    MatChipsModule,
     MatDividerModule,
     MatProgressSpinnerModule,
   ],
