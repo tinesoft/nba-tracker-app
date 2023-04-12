@@ -10,8 +10,6 @@ export class TrackingService {
   private _trackedTeams$ = new BehaviorSubject<Team[]>([]);
   private _lastTrackedTeam:Team|null = null;
 
-  constructor() { }
-
   get trackedTeams$(): Observable<Team[]> {
     return this._trackedTeams$.asObservable();
   }

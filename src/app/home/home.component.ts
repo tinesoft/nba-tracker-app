@@ -1,4 +1,4 @@
-import { ChangeDetectionStrategy, Component, ViewEncapsulation } from '@angular/core';
+import { ChangeDetectionStrategy, Component, ViewEncapsulation, inject } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ApiService } from '@core/services/api.service';
 import { Team } from '@shared/models';
@@ -19,12 +19,11 @@ import { TrackingService } from '@core/services/tracking.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class HomeComponent {
-  teams$ = this.api.getTeams();
+  private trackingService = inject(TrackingService);
+
+  teams$ = inject(ApiService).getTeams();
   trackedTeams$=  this.trackingService.trackedTeams$;
 
-  constructor(private api: ApiService, private trackingService: TrackingService) { }
-
-  ngOnInit() { }
 
   onTrackTeam(team: Team) {
     this.trackingService.trackTeam(team);

@@ -7,6 +7,7 @@ import {
   OnInit,
   Output,
   ViewEncapsulation,
+  inject,
 } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -43,17 +44,18 @@ import { RouterModule } from '@angular/router';
   styleUrls: ['./team-games-summary.component.scss'],
 })
 export class TeamGamesSummaryComponent implements OnInit {
+  private api = inject(ApiService);
+  private gameService = inject(GameService);
+  
   @Input()
   team!: Team;
-
+  
   @Output()
   removeTeam = new EventEmitter<Team>();
 
   gameStats$!: Observable<GameStats>;
-
   nbDays = 12;
 
-  constructor(private api: ApiService, private gameService: GameService) { }
 
   ngOnInit() {
     this.gameStats$ = this.api

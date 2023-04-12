@@ -7,7 +7,6 @@ import { Game, GameStats, Team } from '@shared/models';
   }
 )
 export class GameService {
-  constructor() { }
 
   getGameStatsOfTeam(games: Game[], team: Team): GameStats {
     const { results, totalScoredPoints, totalConcededPoints } = games.reduce(

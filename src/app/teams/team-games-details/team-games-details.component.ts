@@ -4,6 +4,7 @@ import {
   Component,
   OnInit,
   ViewEncapsulation,
+  inject,
 } from '@angular/core';
 import { MatCardModule } from '@angular/material/card';
 import { MatDividerModule } from '@angular/material/divider';
@@ -39,14 +40,15 @@ import { ActivatedRoute, RouterModule } from '@angular/router';
   styleUrls: ['./team-games-details.component.scss'],
 })
 export default class TeamGamesDetailsComponent implements OnInit {
-  team!: Team;
+  private api = inject(ApiService);
+  private gameService = inject(GameService);
+  private route = inject(ActivatedRoute);
 
+  team!: Team;
   team$!: Team;
   games$!: Observable<Game[]>;
-
   nbDays = 12;
 
-  constructor(private api: ApiService, private gameService: GameService, private route: ActivatedRoute) { }
 
   ngOnInit() {
     this.team = this.route.snapshot.data['team'];

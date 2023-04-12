@@ -24,7 +24,7 @@ import { MatButtonModule } from '@angular/material/button';
   templateUrl: './team-selector.component.html',
   styleUrls: ['./team-selector.component.scss']
 })
-export class TeamSelectorComponent implements OnInit {
+export class TeamSelectorComponent {
   teamControl = new FormControl<Team | null>(null);
 
   @Input()
@@ -36,9 +36,6 @@ export class TeamSelectorComponent implements OnInit {
   @Output()
   trackTeam = new EventEmitter<Team>();
 
-  constructor() { }
-
-  ngOnInit() { }
 
   onTrackTeam() {
     this.teamControl.value && this.trackTeam.emit(this.teamControl.value);
