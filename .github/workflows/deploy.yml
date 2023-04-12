@@ -17,10 +17,15 @@ jobs:
     steps:
       - name: Checkout Repo
         uses: actions/checkout@v3
-      - name: Use Node.js 18.x
+      - name: Use Node.js 18
         uses: actions/setup-node@v3
         with:
-          node-version: 18.x
+          node-version: 18
+      - name: Configure CI Git User
+        run: |
+          git config --global user.name 'tinesoft'
+          git config --global user.email ' tinesoft@users.noreply.github.com'
+          
       - name: Install deps & Deploy to Github Pages
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
